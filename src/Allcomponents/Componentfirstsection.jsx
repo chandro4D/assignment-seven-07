@@ -1,7 +1,7 @@
 const Componentfirstsection = () => {
     return (
         <div>
-            <div className='w-[1220px] h-[600px]  ml-[140px] mr-[140px] mt-20 rounded-3xl mb-20 bg-indigo-950'>
+            <div className='w-[1220px] h-[600px]  ml-[140px] mr-[140px] mt-20 rounded-3xl mb-20 bg-[url(https://i.ibb.co/K63smsF/jason-briscoe-KTrov7eujms-unsplash.jpg)]'>
         <div>
           <h3 className='pt-[129px] text-center text-[#FFFFFF] text-6xl font-bold'>Discover an exceptional cooking <br/> class tailored for you!</h3>
           <br/>
