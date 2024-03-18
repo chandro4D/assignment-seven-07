@@ -1,13 +1,27 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
 import Singleproducts from './Singleproducts';
+import Info from './Info';
 const Componentthird = () => {
     const [products,setproducts]=useState([])
+    const [cart,setCart] = useState([]);
     useEffect(() =>{
     fetch('recipes.json')
     .then(res => res.json())
     .then(data => setproducts(data))
   },[])
+
+  const handleCart = (pro) => {
+   const isExist = cart.find((pd) => pd.recipe_id = pro.recipe_id);
+   if(!isExist){
+    setCart([...cart,pro])
+   }
+   else{
+    
+    alert("ALREADY IS IN CART")
+
+   }
+  }
 
 console.log(products)
 return (
@@ -16,7 +30,7 @@ return (
         {/* ----------------------------------------------------- */}
         <div className="card-container grid grid-cols-2 mr-[60px]">
             {
-                products.map(p => <Singleproducts key={products.recipe_id} products={p}></Singleproducts>)
+                products.map(p => <Singleproducts key={products.recipe_id} products={p} handleCart={handleCart} ></Singleproducts>)
             }
           
         </div>
@@ -40,19 +54,11 @@ return (
                 
             </div>
             {/*....................................................  */}
-            <div className="flex text-base font-medium text-[#878787] justify-between mt-[40px] mx-[56px]">
-                <div>
-                    <h2>Name</h2>
-                </div>
-                <div>
-                    <h2>Time</h2>
-                </div>
-                <div>
-                    <h2>Calories</h2>
-                </div>
-                <div className="bg-[#0BE58A] text-[#150B2B] text-base font-medium rounded-[50px] w-[100px] h-[35px] p-1 text-center">
-                    <button>Preparing</button>
-                </div>
+            <div >
+                {
+        
+                   cart.map(products => <Info key={products.recipe_id}></Info>)
+                }
                 
             </div>
             {/* ------------------------------------------------------ */}

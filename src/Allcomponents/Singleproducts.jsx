@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-const Singleproducts = ({products}) => {
+const Singleproducts = ({products,handleCart}) => {
     return (
         <div>
              <div className=' w-[340px] h-[610px] bg-[#28282833] mt-[48px] pt-2                                                                                                                                                                                                           mb-10 ml-[140px] rounded-2xl'>
@@ -33,7 +33,7 @@ const Singleproducts = ({products}) => {
                  </div>
               </div>
               <div className='mt-8 ml-10'>
-                <button className='w-[170px] h-[50px] bg-[#0BE58A] rounded-[50px]'>Want to Cook</button>
+                <button onClick={(e) => handleCart(products)} className='w-[170px] h-[50px] bg-[#0BE58A] rounded-[50px]'>Want to Cook</button>
               </div>
 
 
