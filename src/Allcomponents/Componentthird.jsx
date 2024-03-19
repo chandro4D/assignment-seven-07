@@ -17,6 +17,11 @@ const Componentthird = () => {
         });
     },[]);
 
+    const handleDelete = (recipe_id) =>{
+        const newCart = cart.filter(products => (item => item.recipe_id != recipe_id));
+        setCart(newCart);
+    }
+
     const handleCart = (p) => {
         console.log(p)
        const isExist = cart.find((pd) => pd.recipe_id == p.recipe_id);
@@ -82,19 +87,18 @@ return (
                     <h2>Calories</h2>
                 </div>
             </div>
-            <div className="flex text-base font-medium text-[#878787] justify-between mt-[40px] mx-[56px]">
+            <div className="flex text-base font-medium text-[#878787] justify-around mt-[40px] mx-[56px]">
                 <div>
-                    <h2>Name</h2>
-                </div>
-                <div>
-                    <h2>Time</h2>
+                    <h2>Spicy Chicken Curry</h2>
                 </div>
                 <div>
-                    <h2>Calories</h2>
+                    <h2>15 min</h2>
                 </div>
-                <div className="bg-[#0BE58A] text-[#150B2B] text-base font-medium rounded-[50px] w-[100px] h-[35px] p-1 text-center">
-                    <button>Preparing</button>
+                <div>
+                    <h2>150 calories</h2>
                 </div>
+                
+
                 
             </div>
             <div className="flex gap-[30px] ml-[200px] mt-10">

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Info from './Info';
 const Singleproducts = ({products,handleCart}) => {
     return (
         <div>
