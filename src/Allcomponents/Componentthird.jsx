@@ -2,36 +2,42 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import Singleproducts from './Singleproducts';
 import Info from './Info';
+
 const Componentthird = () => {
-    const [products,setproducts]=useState([])
-    const [cart,setCart] = useState([]);
-    useEffect(() =>{
-    fetch('recipes.json')
-    .then(res => res.json())
-    .then(data => setproducts(data))
-  },[])
-
-  const handleCart = (pro) => {
-   const isExist = cart.find((pd) => pd.recipe_id = pro.recipe_id);
-   if(!isExist){
-    setCart([...cart,pro])
-   }
-   else{
     
-    alert("ALREADY IS IN CART")
+    const [products,setProducts] = useState([]);
+    const [cart,setCart] = useState([]);
 
-   }
-  }
+    useEffect (() => {
+        fetch("recipes.json")
+        .then((res) => res.json())
+        .then((data) => {
+            setProducts(data);
+            console.log(data)
+        });
+    },[]);
 
-console.log(products)
+    const handleCart = (p) => {
+        console.log(p)
+       const isExist = cart.find((pd) => pd.recipe_id == p.recipe_id);
+       if(!isExist){
+        setCart([...cart,p])
+       }
+       else{
+        alert("Already In Cart")
+       }
+    }
+
+
+//  console.log(products)
 return (
 <div>
     <div className='flex justify-between'>
         {/* ----------------------------------------------------- */}
         <div className="card-container grid grid-cols-2 mr-[60px]">
-            {
-                products.map(p => <Singleproducts key={products.recipe_id} products={p} handleCart={handleCart} ></Singleproducts>)
-            }
+            {products.map((pd) =>(
+                <Singleproducts products={pd} key={products.recipe_id} handleCart={handleCart}></Singleproducts>
+            ))}
           
         </div>
        
@@ -106,7 +112,7 @@ return (
         </div>
     </div>
 </div>
-    );
-};
+ );
+ }
 
 export default Componentthird;
